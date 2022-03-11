@@ -15,6 +15,12 @@ module.exports.commands = function commands() {
         new SlashCommandBuilder().setName('behorny').setDescription('A type of Reaction'),
         new SlashCommandBuilder().setName('police').setDescription('A type of Reaction'),
         new SlashCommandBuilder().setName('sauce').setDescription('A type of Reaction'),
+        new SlashCommandBuilder().setName('nosauce').setDescription('A type of Reaction'),
+        new SlashCommandBuilder().setName('dance').setDescription('A type of Reaction'),
+        new SlashCommandBuilder().setName('kekw').setDescription('A type of Reaction'),
+        new SlashCommandBuilder().setName('ded').setDescription('A type of Reaction'),
+        new SlashCommandBuilder().setName('phproud').setDescription('A type of Reaction'),
+        new SlashCommandBuilder().setName('hug').setDescription('A type of Reaction')
     ].map(command => command.toJSON());
     const rest = new REST({ version: '9' }).setToken(token);
     rest.put(Routes.applicationCommands(client_id), { body: commands })

@@ -25,9 +25,25 @@ module.exports.reaction = function reaction(client) {
             } else if (commandName == 'police') {
                 await interaction.reply('Time to go to jail onii-chan.<3');
                 await interaction.channel.send({ embeds: [police()] });
-            } else if (commandName == 'sace') {
+            } else if (commandName == 'sauce') {
+                await interaction.reply('Sauce pls...');
+                await interaction.channel.send({ embeds: [sauce()] });
+            } else if (commandName == 'nosauce') {
                 await interaction.reply('Time to go to jail onii-chan.<3');
-                await interaction.channel.send({ embeds: [police()] });
+                await interaction.channel.send({ embeds: [noSauce()] });
+            } else if (commandName == 'dance') {
+                await interaction.reply('ey');
+                await interaction.channel.send({ embeds: [dance()] });
+            } else if (commandName == 'kekw') {
+                await interaction.reply(kekw());
+            } else if (commandName == 'ded') {
+                await interaction.reply("dead, like cabbage's hope and dreams");
+            } else if (commandName == 'phproud') {
+                await interaction.reply('*proud');
+                await interaction.channel.send({ embeds: [phProud()] });
+            } else if (commandName == 'hug') {
+                await interaction.reply('*hug');
+                await interaction.channel.send({ embeds: [hug()] });
             }
         } catch {
             interaction.reply('Something went wrong');
@@ -38,7 +54,7 @@ module.exports.reaction = function reaction(client) {
         try {
             if (message.content == prefix + "bonk") {
                 var reply_bonk = replyBonk(message);
-                await message.channel.send({ embeds: [reply_bonk] });;
+                message.channel.send({ embeds: [reply_bonk] });;
             }
         } catch {
             message.reply("Something went wrong")
@@ -102,6 +118,58 @@ function police() {
         .setColor('#b695ca')
         .setImage("https://i.imgur.com/bklAY1q.gif");
     return police;
+}
+
+function sauce() {
+    var sauce = new MessageEmbed()
+        .setColor('#b695ca')
+        .setImage("https://i.imgur.com/QPWxK7p.jpg");
+    return sauce;
+}
+
+function noSauce() {
+    var nosauce = new MessageEmbed()
+        .setColor('#b695ca')
+        .setImage("https://i.imgur.com/pbuqa1A.jpg");
+    return nosauce;
+}
+
+function dance() {
+    var dance = new MessageEmbed()
+        .setColor('#b695ca')
+        .setImage("https://i.imgur.com/PfwiPvs.gif");
+    return dance;
+}
+
+function kekw() {
+    var kekw = "KEKW" + "\n" + "https://www.youtube.com/watch?v=640UtcpMPJ0";
+    return kekw;
+}
+
+function phProud() {
+    var phproud = new MessageEmbed()
+        .setColor('#b695ca')
+        .setImage("https://i.imgur.com/Sl4lcXa.jpg");
+    return phproud;
+}
+
+function hug() {
+    axios.get("https://api.waifu.pics/sfw/hug")
+        .then(response => {
+
+            var img_url = response.data.url;
+
+            var img_embed = new MessageEmbed()
+                .setColor('#b695ca')
+                .setImage(img_url);
+
+            return img_embed;
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
 }
 
 
