@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://i.imgur.com/HIo2Mrt.png" width="150px" height="auto" alt="Logo"></a></p>
 
-Is a Discord BOT with a variety of functions.
+Is a Discord BOT along with its homepage.
 
 ## Usage
 
