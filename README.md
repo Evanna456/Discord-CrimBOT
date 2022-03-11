@@ -6,6 +6,9 @@ Is a Discord BOT along with its homepage.
 
 ## Usage
 
+* 1.)Download and Install [NodeJS](https://nodejs.org/en/) if you haven't.
+* 2.)npm start
+
 ## About ExpressJS
 
 <p align="center"><img src="https://i.imgur.com/31e6m1U.png" width="150px" height="auto" alt="Logo"></a></p>
