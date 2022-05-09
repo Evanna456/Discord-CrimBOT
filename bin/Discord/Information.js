@@ -2,6 +2,7 @@ var { Intents, MessageEmbed } = require('discord.js');
 var prefix = process.env.PREFIX;
 var google_search_api_key = process.env.GOOGLE_SEARCH_API_KEY;
 var axios = require('axios');
+var cheerio = require('cheerio');
 
 module.exports.information = function information(client) {
     try {
