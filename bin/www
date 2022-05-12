@@ -14,6 +14,7 @@ require('dotenv').config();
 var SlashCommands = require('./Discord/SlashCommands');
 var BOT = require('./Discord/BOT.js');
 
+var BOT = new BOT();
 /**
  * Get port from environment and store in Express.
  */
