@@ -17,10 +17,13 @@ module.exports = class Reactions {
                     await interaction.reply('cabbage in a nutshell');
                     await interaction.channel.send({ embeds: [cabbage] });
                 } else if (commandName == 'bonk') {
+                    var message_author = interaction.user.username;
+                    var mentioned_user = interaction.options.getUser('user');
                     var bonk = new MessageEmbed()
                         .setColor('#b695ca')
+                        .setDescription("**" + message_author + "**" + " bonked " + "**" + mentioned_user.username + "**")
                         .setImage("https://i.imgur.com/tpJcScJ.jpg");
-                    await interaction.reply('*bonk');
+                    await interaction.reply("<@" + mentioned_user.id + ">");
                     await interaction.channel.send({ embeds: [bonk] });
                 } else if (commandName == 'chad') {
                     var chad = new MessageEmbed()
@@ -101,24 +104,43 @@ module.exports = class Reactions {
                             console.log(error);
                         });
                 }
-            });
-            client.on('messageCreate', async message => {
-                try {
-                    if (message.content == prefix + "bonk") {
-                        var message_author = message.author.username;
-                        var mentioned_user = message.mentions.repliedUser.username;
-                        var reply_bonk = new MessageEmbed()
-                            .setColor('#b695ca')
-                            .setDescription("**" + message_author + "**" + " bonked " + "**" + mentioned_user + "**")
-                            .setImage("https://i.imgur.com/tpJcScJ.jpg");
-
-                        message.channel.send({ embeds: [reply_bonk] });;
-                    }
-                } catch (x) {
-                    message.reply("Something went wrong")
+                else if (commandName == 'nein') {
+                    var nein = new MessageEmbed()
+                        .setColor('#b695ca')
+                        .setImage("https://i.imgur.com/g9A1gAg.gif");
+                    await interaction.reply('NeinNeinNeinNeinNein');
+                    await interaction.channel.send({ embeds: [nein] });
+                }
+                else if (commandName == 'yes') {
+                    var yes = new MessageEmbed()
+                        .setColor('#b695ca')
+                        .setImage("https://i.imgur.com/mqW4rkg.gif");
+                    await interaction.reply('YES');
+                    await interaction.channel.send({ embeds: [yes] });
+                }
+                else if (commandName == 'nuke') {
+                    var nuke = new MessageEmbed()
+                        .setColor('#b695ca')
+                        .setImage("https://i.imgur.com/IXcsA7w.gif");
+                    await interaction.reply('Trash Deleted From Existence.');
+                    await interaction.channel.send({ embeds: [nuke] });
+                }
+                else if (commandName == 'thicc') {
+                    var thicc = new MessageEmbed()
+                        .setColor('#b695ca')
+                        .setImage("https://i.imgur.com/CDu80mz.jpg");
+                    await interaction.reply('Extra THICC');
+                    await interaction.channel.send({ embeds: [thicc] });
+                }
+                else if (commandName == 'amen') {
+                    var amen = new MessageEmbed()
+                        .setColor('#b695ca')
+                        .setImage("https://i.imgur.com/VWLccpR.jpg");
+                    await interaction.reply('Amen');
+                    await interaction.channel.send({ embeds: [amen] });
                 }
             });
-        } catch {
+        } catch (x) {
             message.reply("Something went wrong")
         }
     }

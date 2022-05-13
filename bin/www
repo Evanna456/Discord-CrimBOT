@@ -97,8 +97,8 @@ function onListening() {
   console.log('Listening on ' + bind);
 }
 
-SlashCommands.commands();
 BOT.run();
+SlashCommands.commands();
 
 
 

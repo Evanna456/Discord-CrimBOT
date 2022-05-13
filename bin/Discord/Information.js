@@ -37,15 +37,22 @@ module.exports = class Information {
                         .then(channel =>
                             channel.messages.fetch(discord_message_id_array[2])
                                 .then(message => {
-                                    if (message.attachments.size == 0 && message.embeds.length == 0) {
+                                    if (message.content.length != 0 && message.attachments.size == 0 && message.author.bot == false) {
                                         var message_content = message.content;
-                                        messageLink(message_content);
+                                        var message_author = message.author.username;
+                                        var message_created = message.createdAt.toString();
+                                        messageLink(message_content, message_author, message_created);
                                     }
                                 })
-                                .catch(message.channel.send("Something went wrong")));
+                                .catch());
                 }
-                function messageLink(message_content) {
-                    message.channel.send(message_content);
+                function messageLink(message_content, message_author, message_created) {
+                    var message_embed = new MessageEmbed()
+                        .setColor('#b695ca')
+                        .setDescription(message_content)
+                        .setAuthor(message_author + " posted")
+                        .setFooter(message_created);
+                    message.channel.send({ embeds: [message_embed] });
                 }
             });
         } catch {
