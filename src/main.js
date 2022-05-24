@@ -26,14 +26,13 @@ Vue.config.debug = false;
 Vue.config.silent = true;
 */
 
+const Index = () => import('./components/Index.vue');
+
 const routes = [
   {
     path: "/",
     name: "Index",
-    component: Vue.component(
-      "Index",
-      require("./components/Index.vue").default
-    )
+    component: Index
   }
 ];
 

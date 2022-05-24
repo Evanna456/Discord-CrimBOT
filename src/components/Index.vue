@@ -31,19 +31,21 @@
 </style>
 
 <script>
-  import CrimBOT from "./../assets/CrimBOT.png";
-
   export default {
     name: "Index",
     components: {},
     metaInfo: {
       title: "CrimBOT",
       titleTemplate: "%s",
+      meta: [
+        {
+          name: "description",
+          content: "A Discord BOT.",
+        },
+      ],
     },
     data: function () {
-      return {
-        CrimBOT: CrimBOT,
-      };
+      return {};
     },
     mounted() {
       window.scrollTo(0, 0);

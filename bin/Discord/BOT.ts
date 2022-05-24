@@ -1,14 +1,15 @@
-"use strict";
 var { Client, Intents, MessageEmbed } = require('discord.js');
-var client = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS] });
+var client:any = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS] });
+
 var Reactions = require('./Reactions.js');
 var NSFWs = require('./NSFWs.js');
 var Information = require('./Information.js');
 var Reactions = new Reactions();
 var Information = new Information();
 var NSFWs = new NSFWs();
-module.exports = class BOT {
-    run() {
+
+module.exports = class BOT implements IBOT{
+    run():void {
         // When the client is ready, run this code (only once)
         client.once('ready', () => {
             console.log('Crimbot is ready.');
@@ -20,4 +21,8 @@ module.exports = class BOT {
         NSFWs.nhentai(client);
         Information.info(client);
     }
-};
+}
+
+interface IBOT {
+    run():void;
+}
