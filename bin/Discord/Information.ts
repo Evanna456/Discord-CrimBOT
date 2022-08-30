@@ -11,11 +11,11 @@ module.exports = class Information implements IInformation {
                 var message_length:number = message_content.length;
                 var prefix_length:number = prefix.length;
                 var command_length:number = prefix_length + 2;
-                var command_position:number = message_content.indexOf(prefix + "g?");
+                var command_position:number = message_content.indexOf(prefix + "g/");
                 var command_end:number = command_position + command_length;
-                var search: string = message_content.slice(command_position, message_length);
+                var search: string = message_content.slice(command_end, message_length);
                 var search_trigger: string = message_content.slice(command_position, command_end);
-                if (search_trigger == prefix + "g?") {
+                if (search_trigger == prefix + "g/") {
                     axios.get("https://www.googleapis.com/customsearch/v1?key=" + google_search_api_key + "&q=" + search)
                         .then(response => {
                             if (response.data.searchInformation.totalResults != 0) {

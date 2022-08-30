@@ -20,11 +20,11 @@ module.exports = class Information {
                 var message_length = message_content.length;
                 var prefix_length = prefix.length;
                 var command_length = prefix_length + 2;
-                var command_position = message_content.indexOf(prefix + "g?");
+                var command_position = message_content.indexOf(prefix + "g/");
                 var command_end = command_position + command_length;
-                var search = message_content.slice(command_position, message_length);
+                var search = message_content.slice(command_end, message_length);
                 var search_trigger = message_content.slice(command_position, command_end);
-                if (search_trigger == prefix + "g?") {
+                if (search_trigger == prefix + "g/") {
                     axios.get("https://www.googleapis.com/customsearch/v1?key=" + google_search_api_key + "&q=" + search)
                         .then(response => {
                         if (response.data.searchInformation.totalResults != 0) {
