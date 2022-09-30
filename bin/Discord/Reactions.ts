@@ -1,22 +1,31 @@
 var { Intents, MessageEmbed } = require('discord.js');
+var axios = require('axios');
 var prefix:any = process.env.PREFIX;
-var axios:any = require('axios');
 
 module.exports = class Reactions implements IReactions {
-    interact(client):void {
-            client.on('interactionCreate', async interaction => {
+    interact(_client):void {
+            _client.on('interactionCreate', async interaction => {
                 try {
                 if (!interaction.isCommand()) return;
                 var { commandName } = interaction;
                 if (commandName == 'help') {
-                    await interaction.reply('No :P');
+                    var _help = new MessageEmbed()
+                    .setDescription("I am a DiscordBOT")
+                    .setColor('#b695ca')
+                    .setThumbnail('https://i.imgur.com/4bT7j0O.png')
+                    .addFields(
+                        { name: 'Reactions', value: '/reactions', inline: true },
+                        { name: 'Information', value: '/information', inline: true },
+                        { name: 'NSFW', value: '/nsfw', inline: true },
+                    );
+                    await interaction.reply(_help);
                 }
             } catch (e) {
                 await interaction.reply("Something went wrong");
             }
             });
 
-            client.on('messageCreate', async message => {
+            _client.on('messageCreate', async message => {
                 try {
                 } catch(e) {
                     message.channel.send("Something went wrong");
@@ -26,21 +35,24 @@ module.exports = class Reactions implements IReactions {
                     if(message_content == prefix + "gobeyond"){
                         var go_beyond:string = "and this is..to go even further beyond" + "\n" + "https://www.youtube.com/watch?v=GxL0HcPQFf0";
                         message.channel.send(go_beyond);
+                    }else if(message_content == prefix + "kekw"){
+                        var kekw:string = "KEKW" + "\n" + "https://www.youtube.com/watch?v=640UtcpMPJ0";
+                        message.channel.send(kekw);
                     }else if(message_content == prefix + "behorny"){
-                        var be_horny:any = new MessageEmbed()
+                        var be_horny = new MessageEmbed()
                         .setColor('#b695ca')
                         .setImage("https://i.imgur.com/PggNbRO.jpg");
                         message.channel.send({ embeds: [be_horny] });
                     }else if(message_content == prefix + "bonk"){
                         if(message.mentions.members.first() == null){
-                        var bonk:any = new MessageEmbed()
+                        var bonk = new MessageEmbed()
                         .setColor('#b695ca')
                         .setImage("https://i.imgur.com/tpJcScJ.jpg");
                         message.channel.send({ embeds: [bonk] });
                         }else{
                             var mentioned_user = message.mentions.repliedUser.username;
                             var message_author = message.author.username;
-                            var bonk:any = new MessageEmbed()
+                            var bonk = new MessageEmbed()
                             .setColor('#b695ca')
                             .setDescription("**" + message_author + "**" + " bonked " + "**" + mentioned_user + "**")
                             .setImage("https://i.imgur.com/tpJcScJ.jpg");
@@ -51,7 +63,7 @@ module.exports = class Reactions implements IReactions {
                         axios.get("https://api.waifu.pics/sfw/hug")
                         .then(response => {
                             var img_url:string = response.data.url;
-                            var img_embed:any = new MessageEmbed()
+                            var img_embed = new MessageEmbed()
                                 .setColor('#b695ca')
                                 .setImage(img_url);
                                 message.channel.send({ embeds: [img_embed] });
@@ -65,7 +77,7 @@ module.exports = class Reactions implements IReactions {
                             axios.get("https://api.waifu.pics/sfw/hug")
                             .then(response => {
                                 var img_url:string = response.data.url;
-                                var img_embed:any = new MessageEmbed()
+                                var img_embed = new MessageEmbed()
                                     .setColor('#b695ca')
                                     .setDescription("**" + message_author + "**" + " hugged " + "**" + mentioned_user + "**")
                                     .setImage(img_url);
@@ -76,17 +88,17 @@ module.exports = class Reactions implements IReactions {
                             });
                         }
                     }else if(message_content == prefix + "nein"){          
-                        var nein:any = new MessageEmbed()
+                        var nein = new MessageEmbed()
                         .setColor('#b695ca')
                         .setImage("https://i.imgur.com/g9A1gAg.gif");
                          message.channel.send({ embeds: [nein] });
                     }else if(message_content == prefix + "thicc"){          
-                        var thicc:any = new MessageEmbed()
+                        var thicc = new MessageEmbed()
                         .setColor('#b695ca')
                         .setImage("https://i.imgur.com/CDu80mz.jpg");
                          message.channel.send({ embeds: [thicc] });
                     }else if(message_content == prefix + "yes"){          
-                        var yes:any = new MessageEmbed()
+                        var yes = new MessageEmbed()
                         .setColor('#b695ca')
                         .setImage("https://i.imgur.com/mqW4rkg.gif");
                          message.channel.send({ embeds: [yes] });
@@ -96,5 +108,5 @@ module.exports = class Reactions implements IReactions {
 }
 
 interface IReactions{
-   interact(client):void;
+   interact(_client):void;
 }

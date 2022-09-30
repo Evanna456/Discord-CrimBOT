@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var { Intents, MessageEmbed } = require('discord.js');
 var prefix = process.env.PREFIX;
 module.exports = class Information {
-    nhentai(client) {
-        client.on('messageCreate', (message) => __awaiter(this, void 0, void 0, function* () {
+    nhentai(_client) {
+        _client.on('messageCreate', (message) => __awaiter(this, void 0, void 0, function* () {
             try {
                 if (message.channel.nsfw == true) {
                     if (isNaN(message.content) == false && message.content.length >= 5 && message.content.length <= 6) {

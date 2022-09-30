@@ -2,8 +2,8 @@ var { Intents, MessageEmbed } = require('discord.js');
 var prefix:any = process.env.PREFIX;
 
 module.exports = class Information implements INSFWs {
-    nhentai(client):void {
-        client.on('messageCreate', async message => {
+    nhentai(_client):void {
+        _client.on('messageCreate', async message => {
             try {
                 if (message.channel.nsfw == true) {
                     if (isNaN(message.content) == false && message.content.length >= 5 && message.content.length <= 6) {
@@ -20,5 +20,5 @@ module.exports = class Information implements INSFWs {
 }
 
 interface INSFWs {
-    nhentai(client):void;
+    nhentai(_client):void;
 }

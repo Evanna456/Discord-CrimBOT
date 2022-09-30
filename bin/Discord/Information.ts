@@ -1,11 +1,11 @@
 var { Intents, MessageEmbed } = require('discord.js');
-var prefix:any = process.env.PREFIX;
+var axios = require('axios');
 var google_search_api_key:any = process.env.GOOGLE_SEARCH_API_KEY;
-var axios:any = require('axios');
+var prefix:any = process.env.PREFIX;
 
 module.exports = class Information implements IInformation {
-    info(client):void {
-            client.on('messageCreate', async message => {
+    info(_client):void {
+            _client.on('messageCreate', async message => {
                 try {
                 var message_content:string = message.content;
                 var message_length:number = message_content.length;
@@ -32,7 +32,7 @@ module.exports = class Information implements IInformation {
                 } else if (message_content.includes("https://discord.com/channels/") == true) {
                     var discord_message_ids:string = message_content.slice(29, message_length);
                     var discord_message_id_array:Array<string> = discord_message_ids.split("/");
-                    client.channels.fetch(discord_message_id_array[1])
+                    _client.channels.fetch(discord_message_id_array[1])
                         .then(channel =>
                             channel.messages.fetch(discord_message_id_array[2])
                                 .then(message => {
@@ -61,5 +61,5 @@ module.exports = class Information implements IInformation {
 }
 
 interface IInformation {
-    info(client):void;
+    info(_client):void;
 }

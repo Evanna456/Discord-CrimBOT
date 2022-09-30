@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var { Intents, MessageEmbed } = require('discord.js');
-var prefix = process.env.PREFIX;
-var google_search_api_key = process.env.GOOGLE_SEARCH_API_KEY;
 var axios = require('axios');
+var google_search_api_key = process.env.GOOGLE_SEARCH_API_KEY;
+var prefix = process.env.PREFIX;
 module.exports = class Information {
-    info(client) {
-        client.on('messageCreate', (message) => __awaiter(this, void 0, void 0, function* () {
+    info(_client) {
+        _client.on('messageCreate', (message) => __awaiter(this, void 0, void 0, function* () {
             try {
                 var message_content = message.content;
                 var message_length = message_content.length;
@@ -43,7 +43,7 @@ module.exports = class Information {
                 else if (message_content.includes("https://discord.com/channels/") == true) {
                     var discord_message_ids = message_content.slice(29, message_length);
                     var discord_message_id_array = discord_message_ids.split("/");
-                    client.channels.fetch(discord_message_id_array[1])
+                    _client.channels.fetch(discord_message_id_array[1])
                         .then(channel => channel.messages.fetch(discord_message_id_array[2])
                         .then(message => {
                         if (message.content.length != 0 && message.attachments.size == 0 && message.author.bot == false) {

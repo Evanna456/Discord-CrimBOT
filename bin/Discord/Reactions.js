@@ -9,24 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var { Intents, MessageEmbed } = require('discord.js');
-var prefix = process.env.PREFIX;
 var axios = require('axios');
+var prefix = process.env.PREFIX;
 module.exports = class Reactions {
-    interact(client) {
-        client.on('interactionCreate', (interaction) => __awaiter(this, void 0, void 0, function* () {
+    interact(_client) {
+        _client.on('interactionCreate', (interaction) => __awaiter(this, void 0, void 0, function* () {
             try {
                 if (!interaction.isCommand())
                     return;
                 var { commandName } = interaction;
                 if (commandName == 'help') {
-                    yield interaction.reply('No :P');
+                    var _help = new MessageEmbed()
+                        .setDescription("I am a DiscordBOT")
+                        .setColor('#b695ca')
+                        .setThumbnail('https://i.imgur.com/4bT7j0O.png')
+                        .addFields({ name: 'Reactions', value: '/reactions', inline: true }, { name: 'Information', value: '/information', inline: true }, { name: 'NSFW', value: '/nsfw', inline: true });
+                    yield interaction.reply(_help);
                 }
             }
             catch (e) {
                 yield interaction.reply("Something went wrong");
             }
         }));
-        client.on('messageCreate', (message) => __awaiter(this, void 0, void 0, function* () {
+        _client.on('messageCreate', (message) => __awaiter(this, void 0, void 0, function* () {
             try {
             }
             catch (e) {
@@ -36,6 +41,10 @@ module.exports = class Reactions {
             if (message_content == prefix + "gobeyond") {
                 var go_beyond = "and this is..to go even further beyond" + "\n" + "https://www.youtube.com/watch?v=GxL0HcPQFf0";
                 message.channel.send(go_beyond);
+            }
+            else if (message_content == prefix + "kekw") {
+                var kekw = "KEKW" + "\n" + "https://www.youtube.com/watch?v=640UtcpMPJ0";
+                message.channel.send(kekw);
             }
             else if (message_content == prefix + "behorny") {
                 var be_horny = new MessageEmbed()
@@ -102,6 +111,12 @@ module.exports = class Reactions {
                     .setColor('#b695ca')
                     .setImage("https://i.imgur.com/CDu80mz.jpg");
                 message.channel.send({ embeds: [thicc] });
+            }
+            else if (message_content == prefix + "yes") {
+                var yes = new MessageEmbed()
+                    .setColor('#b695ca')
+                    .setImage("https://i.imgur.com/mqW4rkg.gif");
+                message.channel.send({ embeds: [yes] });
             }
         }));
     }
