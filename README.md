@@ -7,7 +7,7 @@ A Discord BOT with a homepage.
 ## Usage
 
 * 1.)Download and Install [NodeJS 16.x Runtime](https://nodejs.org/en/)
-* 2.)npm start
+* 2.)cli>npm start
 
 ## ExpressJS
 
