@@ -4,11 +4,6 @@
 
 A Discord BOT with a homepage.
 
-## Usage
-
-* 1.)Download and Install [NodeJS 16.x Runtime](https://nodejs.org/en/)
-* 2.)cli>npm start
-
 ## ExpressJS
 
 <p align="center"><img src="https://i.imgur.com/31e6m1U.png" width="150px" height="auto" alt="Logo"></a></p>
